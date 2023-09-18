@@ -6,6 +6,9 @@
     <title>Test</title>
 </head>
 <body>
+    @auth
+        <p>Congratulations You are logged In</p>
+    @else
     <div style="border: 5px solid black;">
         <h2>Register</h2>
         <form action="/register" method="POST">
@@ -16,5 +19,8 @@
             <button>Register</button>
         </form>
     </div>
+
+    @endauth
+
 </body>
 </html>
