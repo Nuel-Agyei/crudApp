@@ -8,6 +8,10 @@
 <body>
     @auth
         <p>Congratulations You are logged In</p>
+        <form action="/logout" method="POST">
+            @csrf
+            <button>Log out</button>
+        </form>
     @else
     <div style="border: 5px solid black;">
         <h2>Register</h2>
@@ -17,6 +21,16 @@
             <input name="email" type="text" placeholder="email">
             <input name="password" type="password" placeholder="password">
             <button>Register</button>
+        </form>
+    </div>
+
+    <div style="border: 5px solid black;">
+        <h2>Log In</h2>
+        <form action="/login" method="POST">
+            @csrf
+            <input name="logname" type="text" placeholder="name">
+            <input name="logpassword" type="password" placeholder="password">
+            <button>Log In</button>
         </form>
     </div>
 

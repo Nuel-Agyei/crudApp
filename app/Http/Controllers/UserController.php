@@ -18,5 +18,22 @@ class UserController extends Controller
        $user = User::create($fields);
         auth()->login($user);
         return redirect('/');
+ }
+    public function logout(){
+        auth()->logout();
+        return redirect('/');
+        }
+
+    public function login(Request $request){
+        $fields = $request->validate([
+            'logname'=> 'required',
+            'logpassword'=>'required'
+        ]);
+
+        if(auth()->attempt(['name'=>$fields['logname'], 'password'=>$fields['logpassword']])) {
+            $request->session()->regenerate();
+        }
+        return redirect('/');
     }
+
 }
